@@ -1,0 +1,16 @@
+
+.text{
+    color:	#64c2ec;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 42px;
+}
+
+.text1{
+    font-size: 20px ;
+    font-weight: 500;
+    color: azure;
+}
+.logo{
+    height: 100px;
+    width: 100px;
+}

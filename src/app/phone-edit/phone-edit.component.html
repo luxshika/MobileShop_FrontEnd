@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <h5 class="modal-title">Edit Phone Details</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <!-- Form fields similar to your existing form with formControlName bindings -->
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" formControlName="productName" class="form-control">
+    </div>
+    <!-- Add other fields here -->
+    <button type="submit" class="btn btn-primary">Save changes</button>
+  </form>
+</div>

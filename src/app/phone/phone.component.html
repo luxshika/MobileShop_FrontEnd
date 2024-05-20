@@ -1,0 +1,134 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/img/logo.png" alt=""  class="d-inline-block logo">
+        <span class="text1"><span class="text"> ThanShara</span>&nbsp;  Mobile Shop</span>
+      </a>
+    </div>
+  </nav><br><br>
+  <div class="container">
+    
+   <app-form></app-form>
+ 
+
+<br>
+  <div class = "table-responsive">
+    <table class = "table ">
+       <thead>
+           <tr>
+               <th>Id</th>
+               <th>Product Name</th>
+               <th>Brand Name</th>
+               <th>Price</th>
+               <th>Quantity</th>
+               <th>Made In</th>
+               <th>Features</th>
+               <th>Image</th>
+               <th colspan="2">Action</th>
+           </tr>
+       </thead>
+       <tbody>
+        <tr [ngClass]='{"bg-dark":o}'
+        *ngFor="let phone of phones;let o = odd">
+        <td>{{phone.id}}</td>
+        <td>{{phone.productName}}</td>
+        <td>{{phone.brandName}}</td>
+        <td>{{phone.price}}</td>
+        <td>{{phone.quantity}}</td>
+        <td>{{phone.madein}}</td>
+        <td>{{phone.feature}}</td>
+        <td>{{phone.image}}</td>
+          <td>
+          <button class="btn btn-info text-light px-4" style="background-color: #64c2ec;" (click)="openModel(phone)">View</button>&nbsp;&nbsp;
+          <button class="btn btn-dark text-light px-4" (click)="openModel(phone)">Edit</button>&nbsp;&nbsp;
+          <button class="btn  btn-secondary px-3" (click)="deletePhone(phone.id)">Delete</button>
+          <!-- (click)="ViewPhone(phone)" (click)="EditPhone(phone)" -->
+        </tr>
+          
+
+       </tbody>
+    </table>
+   </div>
+</div>
+<div class="modal " id="mymodel"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title text-info" id="mymodel">Add Mobile Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModel()"></button>
+      </div>
+      <div class="modal-body">
+              <form action="" class = "p-5" [formGroup]="userForm">
+            
+                  <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" name = "productName"  formControlName = "productName" class = "form-control" autocomplete="off">
+                    <span class="text-danger" *ngIf="!userForm.get('productName')?.valid && userForm.get('productName')?.touched">Please enter the Product name !
+          
+                    </span>
+                  </div><br>
+                  <div class="form-group">
+                    <label for="country">Brand Name</label>
+                    <select type="text" id="brandName" name = "brandName"  class = "form-control">
+                      <option *ngFor = "let c of brandnames">
+                         {{c.brandName}}
+                      </option>
+                    </select>
+                  </div>
+                  <span class="text-danger" *ngIf="!userForm.get('brandName')?.valid && userForm.get('brandName')?.touched">Please enter a Brand Name !
+          
+                  </span><br>
+                  <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name = "price"  formControlName = "price" class = "form-control" autocomplete="off">
+                    <span class="text-danger" *ngIf="!userForm.get('price')?.valid && userForm.get('price')?.touched">Please enter the Price!
+          
+                    </span>
+                  </div><br>
+                  <div class="form-group">
+                    <label for="price">Availabe Quantity</label>
+                    <input type="number" id="quantity" name = "quantity"  formControlName = "quantity" class = "form-control" autocomplete="off">
+                    <span class="text-danger" *ngIf="!userForm.get('quantity')?.valid && userForm.get('quantity')?.touched">Please enter the quantity!
+          
+                    </span>
+                  </div><br>
+                  <div class="form-group">
+                    <label for="madein">Made In</label>
+                    <input type="text" id="madein" name = "madein"  formControlName = "madein" class = "form-control" autocomplete="off">
+                    <span class="text-danger" *ngIf="!userForm.get('madein')?.valid && userForm.get('madein')?.touched">Please enter the MadeIn details !
+          
+                    </span>
+                  </div><br>
+
+
+                  <div class="form-group">
+                    <label for="feature">Features</label>
+                    <textarea id="feature" name="feature" rows="4" cols="50" formControlName = "feature" class = "form-control">
+                      
+                        </textarea>
+                      
+                    <span class="text-danger" *ngIf="!userForm.get('feature')?.valid && userForm.get('feature')?.touched">Please enter the Features details !
+          
+                    </span>
+                  </div><br>
+                  <div class="form-group">
+                   
+                    <input type="file" id="image" name="image" >
+                    <span class="text-danger" *ngIf="!userForm.get('image')?.valid && userForm.get('image')?.touched">Please enter the Image !
+          
+                    </span>
+                  </div><br>
+                 
+               
+              </form>
+          
+            
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModel()">Close</button>
+        <button type="button" class="btn  btn-dark text-info" (click)="onsubmit()">ADD</button>
+      </div>
+    </div>
+  </div>
+</div>

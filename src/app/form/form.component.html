@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-dark text-info px-5 py-3" (click)="openModel()">Add</button>
+    </div>
+</div>
+
+<div class="modal " id="mymodel"  aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title text-info" id="mymodel">Add Mobile Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModel()"></button>
+        </div>
+        <div class="modal-body">
+                <form action="" class = "p-5" [formGroup]="userForm">
+              
+                    <div class="form-group">
+                      <label for="productName">Product Name</label>
+                      <input type="text" id="productName" name = "productName"  formControlName = "productName" class = "form-control" autocomplete="off">
+                      <span class="text-danger" *ngIf="!userForm.get('productName')?.valid && userForm.get('productName')?.touched">Please enter the Product name !
+            
+                      </span>
+                    </div><br>
+                    <div class="form-group">
+                      <label for="country">Brand Name</label>
+                      <select type="text" id="brandName" name = "brandName"  class = "form-control">
+                        <option *ngFor = "let c of brandnames">
+                           {{c.brandName}}
+                        </option>
+                      </select>
+                    </div>
+                    <span class="text-danger" *ngIf="!userForm.get('brandName')?.valid && userForm.get('brandName')?.touched">Please enter a Brand Name !
+            
+                    </span><br>
+                    <div class="form-group">
+                      <label for="price">Price</label>
+                      <input type="text" id="price" name = "price"  formControlName = "price" class = "form-control" autocomplete="off">
+                      <span class="text-danger" *ngIf="!userForm.get('price')?.valid && userForm.get('price')?.touched">Please enter the Price!
+            
+                      </span>
+                    </div><br>
+                    <div class="form-group">
+                      <label for="price">Availabe Quantity</label>
+                      <input type="number" id="quantity" name = "quantity"  formControlName = "quantity" class = "form-control" autocomplete="off">
+                      <span class="text-danger" *ngIf="!userForm.get('quantity')?.valid && userForm.get('quantity')?.touched">Please enter the quantity!
+            
+                      </span>
+                    </div><br>
+                    <div class="form-group">
+                      <label for="madein">Made In</label>
+                      <input type="text" id="madein" name = "madein"  formControlName = "madein" class = "form-control" autocomplete="off">
+                      <span class="text-danger" *ngIf="!userForm.get('madein')?.valid && userForm.get('madein')?.touched">Please enter the MadeIn details !
+            
+                      </span>
+                    </div><br>
+  
+  
+                    <div class="form-group">
+                      <label for="feature">Features</label>
+                      <textarea id="feature" name="feature" rows="4" cols="50" formControlName = "feature" class = "form-control">
+                        
+                          </textarea>
+                        
+                      <span class="text-danger" *ngIf="!userForm.get('feature')?.valid && userForm.get('feature')?.touched">Please enter the Features details !
+            
+                      </span>
+                    </div><br>
+                    <div class="form-group">
+                     
+                      <input type="file" id="image" name="image" >
+                      <span class="text-danger" *ngIf="!userForm.get('image')?.valid && userForm.get('image')?.touched">Please enter the Image !
+            
+                      </span>
+                    </div><br>
+                   
+                 
+                </form>
+            
+              
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModel()">Close</button>
+          <button type="button" class="btn  btn-dark text-info" (click)="onsubmit()">ADD</button>
+        </div>
+      </div>
+    </div>
+  </div>
